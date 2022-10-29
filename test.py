@@ -1,17 +1,40 @@
-import hashlib
-def crack_password():
-    password = "0c01f4468bd75d7a84c7eb73846e8d96"
-    output = ""
-    wordlist = "/home/kali/Documents/wordlists/SecLists/rockyou.txt "
-    salt = "1d0t1111"
-    word_dict = open(wordlist)
-    for line in word_dict.readlines():
-        line = line.replace("\n", "")
-        print(line)
-        if hashlib.md5((str(salt) + line).encode("utf-8")).hexdigest() == password:
-            output += "\n[+] Password cracked: " + line
-            break
-    word_dict.close()
-    print(output)
+# from tqdm import tqdm
+
+# val = 11111111111111
+
+# for val in tqdm(range(val,99999999999999)):
+
+#     v1 = 0
+#     v2 = 0
+#     while True:
+#         input_len = len(str(val))
+#         if input_len <=v2:
+#             break
+#         v1 = v1 + int(str(val)[v2])
+#         v2 = v2 + 1
+#     if v1 == 1000:
+#         print("Found value")
+#         print(v1)
+#         break
+
+# print("not found")
+
+val = "n"
+v1 = 0
+v2 = 0
+while True:
+    v1 = v1 + int(ord(val[v2]))
+    v2 = v2 + 1
+    print(val)
     
-crack_password()
+
+    if v1 > 850 and v1 < 900:
+        print(v1)
+        print(val)
+        val += "x"
+
+    if v1 == 1000:
+        print("yes found it")
+        print(val)
+        break
+    val += "n"
